@@ -1,7 +1,7 @@
 ---
 name: Homework 5
 tools: [Python, HTML, vega-lite]
-image: [assets/pngs/homework_5_plot_1.png, assets/pngs/homework_5_plot_2.png]
+image: assets/pngs/homework_5_plot_1.png
 description: Plots for homework 5
 custom_js:
   - vega.min
