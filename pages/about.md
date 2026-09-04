@@ -30,19 +30,6 @@ problem solving.
 {% include about/timeline.html %}
 </div>
 
-## **Selected Data Analytics Projects**
-
-**[Video Game Reviews and U.S. Sales Analysis](https://github.com/AlexanderGarcia98/STAT_207_Project_02_Video_Game_Reviews_and_US_Sales_Analysis)** — *Oct 2024*<br>
-Analyzed video game review and U.S. sales data with Python, Pandas, NumPy, and Matplotlib
-in a collaborative project. Evaluated the proportion of highly reviewed games and compared
-their U.S. sales against the dataset average to translate the results into a clear
-analytical conclusion.
-
-**[Exploratory Data Analysis](https://github.com/AlexanderGarcia98/STAT_107_Project_02_Exploratory_Data_Analysis)** — *Apr 2024*<br>
-Cleaned and explored a video game character dataset using Python, Pandas, and Statsmodels.
-Built visualizations and conducted hypothesis testing, including the calculation and
-interpretation of a p-value.
-
 ## **Leadership & Activities**
 
 - **SIGPwny**, Member — *Jan 2025 – May 2026*

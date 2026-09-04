@@ -23,12 +23,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Homework 5">
-  <meta property="og:description" content="Plots for homework 5">
-  <meta property="og:image" content="assets/pngs/homework_5_plot_1.png">
+  <meta property="og:title" content="Exploratory Data Analysis">
+  <meta property="og:description" content="STAT 107 project cleaning and exploring a video game character dataset, with visualizations and hypothesis testing.">
+  <meta property="og:image" content="assets/pngs/exploratory_scshot.png">
 
-  <title>Homework 5</title>
-  <meta name="description" content="Plots for homework 5">
+  <title>Exploratory Data Analysis</title>
+  <meta name="description" content="STAT 107 project cleaning and exploring a video game character dataset, with visualizations and hypothesis testing.">
 
   <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.ico">
 
@@ -75,41 +75,9 @@
 
 </nav>
     <div class="col-lg-10 mx-auto mt-5 markdown-body">
-  <h1 id="plot-1">Plot 1</h1>
-
-<p>Plot 1 Write-Up</p>
-
-<p>Plot 1: Most common license types in Fall 2022.</p>
-
-<p>For my first visualization, I examined which business license types were most frequently issued during Fall 2022. The dataset contains application records including license descriptions, business names, and application dates. I transformed the application date column into a timestamp, removed missing values, and counted how many times each LICENSE_DESCRIPTION appeared. I selected the top 15 most common categories to keep the visualization readable. Using Altair, I encoded the license type as a nominal variable on the y-axis and the number of applications as a quantitative value on the x-axis. I added a continuous color encoding on the count variable to reinforce which categories were most prevalent. This horizontal bar chart makes it easier to compare business types and highlights which categories have more licensing activity.</p>
-
-<vegachart schema-url="/assets/json/licenses_top_types.json" style="width: 100%"></vegachart>
-
-<h1 id="plot-2">Plot 2</h1>
-
-<p>Plot 2 Write-Up</p>
-
-<p>Plot 2: Monthly licensing trends linked to license types
-The second visualization explores how licensing activity changes throughout the year and which kinds of businesses contribute to these trends. I first converted APPLICATION_RECEIVED_DATE into a timestamp, then extracted the month and year components in Python. The top chart shows a bar chart of the number of applications per month. The bottom chart shows counts of license types, but only for the months the user selects. Both charts draw from the same cleaned dataset, but the lower chart updates dynamically based on the user’s selected time window.</p>
-
-<p>To add meaningful interactivity, I used an interval brush selection (alt.selection_interval) along the x-axis of the month histogram. When the user drags to select a range of months, the bottom bar chart automatically filters to show only license types submitted during that range. This makes it easy to explore patterns—such as seasonal spikes, restaurant-heavy months, or months dominated by construction permits. The interactivity helps users quickly investigate temporal patterns without cluttering the view with multiple faceted or small-multiple charts.</p>
-
-<vegachart schema-url="/assets/json/licenses_month_linked.json" style="width: 100%"></vegachart>
-
-<h2 id="search-the-data--methods">Search The Data &amp; Methods</h2>
-
-<div class="left">
-<a class="m-1 btn btn-outline-primary btn-2 " href="https://github.com/UIUC-iSchool-DataViz/is445_data/raw/main/licenses_fall2022.csv">
-  The Data
-</a>
-</div>
-
-<div class="right">
-<a class="m-1 btn btn-outline-primary btn-2 " href="https://github.com/garcia9810/garcia9810.github.io/tree/main/python_notebooks/Workbook.ipynb">
-  The Analysis
-</a>
-</div>
-
+  <p>Cleaned and explored a video game character dataset using Python, Pandas, and Statsmodels.
+Created visualizations and conducted hypothesis testing, including the calculation and
+interpretation of a p-value.</p>
 
 </div>
   </main>
@@ -149,17 +117,6 @@ The second visualization explores how licensing activity changes throughout the 
 
 </footer>
 
-
-<!-- Custom page specific js files -->
-  
-    <script src='/assets/js/vega.min.js' type="text/javascript"></script>
-  
-    <script src='/assets/js/vega-lite.min.js' type="text/javascript"></script>
-  
-    <script src='/assets/js/vega-embed.min.js' type="text/javascript"></script>
-  
-    <script src='/assets/js/justcharts.js' type="text/javascript"></script>
-  
 
 
 
