@@ -9,6 +9,7 @@ title               : Alexander Garcia
 description         : >-
                       Information & Data Science graduate (UIUC) working in Python and SQL,
                       with experience in networking and IT support.
+url                 : "https://garcia9810.github.io"   # Canonical site URL, used for sitemap.xml, robots.txt and social preview tags
 baseurl             : ""   # Change to empty quotes if you are hosting your site at <your-username>.github.io directly,
 #                                             otherwise will be hosted at <your-username>.github.io/{{base_url}}
 repository          :                     # Change to <your-username> for github OR, if that doesn't work <your-username>/<your-username>.github.io (or remove it if you don't need remote projects) -- for example, I would put "jnaiman" without the quotes after the ":" here
@@ -27,6 +28,7 @@ port: 4008
 
 ### Navbar Settings ###
 nav_exclude:                                            # The following paths are excluded from navbar
+  - pages/blog.html
   - pages/tags.html
   - pages/404.html
   - pages/index.md

@@ -4,8 +4,8 @@
   color: secondary
 
 - name: SQL
-  percentage: 80
-  level: Advanced
+  percentage: 70
+  level: Intermediate
   color: primary
 
 - name: Pandas / NumPy
