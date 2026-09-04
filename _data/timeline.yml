@@ -1,27 +1,31 @@
-- title: AMAZING STUFF
-  from: 2019
-  to: present
-  description: Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-               sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-               Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-               nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-               reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+- title: B.S. Information Science, University of Illinois Urbana-Champaign
+  from: Aug 2022
+  to: May 2026
+  description: Minor in Data Science with a concentration in Data Science / Data Analytics,
+               graduating with a 3.5/4.0 GPA. Earned an Information Trust Institute (ITI)
+               Certificate in Cybersecurity alongside the degree. Relevant coursework included
+               Statistics and Applications, Data Visualization and Modeling, Computer
+               Programming, Machine Learning, Data Science, and Cybersecurity.
 
-- title: Student, Harvard CS
-  from: 2013
-  to: 2018
-  description: Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-               sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-               Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-               nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-               reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+- title: Lab OnSite Consultant, UIUC Technology Services
+  from: Jan 2025
+  to: May 2026
+  description: Provided on-site support for hardware, software, and lab technology issues
+               across the ICS computer labs, with primary responsibility for the XR Lab.
+               Performed routine technology checks and hands-on troubleshooting to restore
+               reliable lab access and minimize disruption for students and staff.
 
-- title: Software Engineer, Google, UK
-  from: 2018
-  to: present
-  description: Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-               sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-               Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-               nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-               reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+- title: Network Technician, UIUC University Housing
+  from: Sep 2024
+  to: May 2026
+  description: Diagnosed and resolved wired connectivity, wireless device, and supported-software
+               issues submitted through the University Housing ticketing process. Maintained
+               computer lab technology across University Housing buildings and documented
+               technical issues clearly, communicating troubleshooting steps in user-friendly
+               language.
 
+- title: Catering Student Worker, UIUC University Housing
+  from: Oct 2022
+  to: Sep 2024
+  description: Delivered customer service at university catering events, trained new employees,
+               and coordinated the materials and food needed to run each event.
