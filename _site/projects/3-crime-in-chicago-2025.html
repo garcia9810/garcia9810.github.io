@@ -23,12 +23,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Projects">
-  <meta property="og:description" content="Information & Data Science graduate (UIUC) working in Python and SQL, with experience in networking and IT support.">
-  <meta property="og:image" content="https://garcia9810.github.io/assets/pngs/headshot.jpg">
+  <meta property="og:title" content="Crime in Chicago 2025">
+  <meta property="og:description" content="Interactive Streamlit data story exploring 2025 Chicago crime patterns, long-term citywide trends, and how neighborhood hardship relates to reported incidents.">
+  <meta property="og:image" content="assets/pngs/chicago_crimes.png">
 
-  <title>Projects</title>
-  <meta name="description" content="Information & Data Science graduate (UIUC) working in Python and SQL, with experience in networking and IT support.">
+  <title>Crime in Chicago 2025</title>
+  <meta name="description" content="Interactive Streamlit data story exploring 2025 Chicago crime patterns, long-term citywide trends, and how neighborhood hardship relates to reported incidents.">
 
   <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.ico">
 
@@ -72,49 +72,50 @@
   </div>
 
 </nav>
-    <div class="card-columns m-3 mt-5">
+    <div class="col-lg-10 mx-auto mt-5 markdown-body">
+  <h1 id="crime-in-chicago-2025-the-patterns-within-the-story">Crime in Chicago 2025: The Patterns Within The Story</h1>
 
-  <!-- Local Projects -->
-  <div class="wow animated fadeIn" data-wow-delay=".15s">
-  <a href="https://github.com/AlexanderGarcia98/STAT_207_Project_02_Video_Game_Reviews_and_US_Sales_Analysis" class="project card text-themed"><img id="video-game-reviews-and-u-s-sales-analysis-img" class="card-img-top" src="/assets/pngs/project_3_scshot.png" alt="Video Game Reviews and U.S. Sales Analysis" /><div class="card-body">
-      <h5 id="video-game-reviews-and-u-s-sales-analysis-name" class="card-title">Video Game Reviews and U.S. Sales Analysis
-      </h5>
-      <p id="video-game-reviews-and-u-s-sales-analysis-desc" class="card-text">Collaborative STAT 207 analysis evaluating the proportion of highly reviewed video games and comparing their U.S. sales against the dataset average.</p>
-      <p id="video-game-reviews-and-u-s-sales-analysis-tools" class="card-text"><span class="badge badge-pill text-primary border border-primary ml-1">Python</span><span class="badge badge-pill text-primary border border-primary ml-1">Pandas</span><span class="badge badge-pill text-primary border border-primary ml-1">NumPy</span><span class="badge badge-pill text-primary border border-primary ml-1">Matplotlib</span></p>
-    </div>
-  </a>
+<p>An interactive data story built with Streamlit that uses open data from the City of Chicago
+to look past individual headlines and examine the larger patterns behind reported crime.</p>
+
+<p class="text-center">
+<a class="m-1 btn btn-outline-primary btn-2 " href="https://crimeinchicago2025-d6eond6bajvcyk3edgbns5.streamlit.app/">
+  Launch the App
+</a>
+<a class="m-1 btn btn-outline-secondary btn-3 " href="https://github.com/garcia9810/Crime_in_Chicago_2025">
+  View on GitHub
+</a>
+</p>
+
+<p><img src="/assets/pngs/chicago_crimes.png" alt="Crime in Chicago 2025 app" /></p>
+
+<h2 id="what-the-app-does">What the App Does</h2>
+
+<ul>
+  <li><strong>Where are crimes happening in 2025?</strong> An Altair scatter map of reported incidents, filterable
+by offense type, month, and whether an arrest was made. The map samples down past 5,000 points
+so it stays responsive under broad filters.</li>
+  <li><strong>How does 2025 compare to previous years?</strong> A citywide line chart of yearly incident totals
+from 2001 to the present, pre-aggregated through the open data API to keep the payload small.</li>
+  <li><strong>Crime and hardship across community areas.</strong> 2025 incidents joined to census socioeconomic
+indicators at the community-area level, plotted against the hardship index.</li>
+</ul>
+
+<h2 id="technical-notes">Technical Notes</h2>
+
+<p>Data is pulled live from the City of Chicago Socrata API rather than checked-in CSVs, so the app
+never falls out of sync with the source. Each dataset load is wrapped in <code class="language-plaintext highlighter-rouge">st.cache_data</code> to avoid
+re-fetching on every interaction, and the app ships as a Docker image for deployment.</p>
+
+<h2 id="data-sources">Data Sources</h2>
+
+<ul>
+  <li><a href="https://data.cityofchicago.org/Public-Safety/Crimes-2025/t7ek-mgzi/about_data">Crimes – 2025</a>, City of Chicago Open Data Portal</li>
+  <li><a href="https://data.cityofchicago.org/Public-Safety/Crimes-2001-to-Present/ijzp-q8t2">Crimes – 2001 to Present</a>, City of Chicago Open Data Portal</li>
+  <li><a href="https://data.cityofchicago.org/dataset/Census-Data-Selected-socioeconomic-indicators-in-Chicago-2008-2012/kn9c-c2s2">Census Data – Selected Socioeconomic Indicators in Chicago, 2008–2012</a>, City of Chicago Open Data Portal</li>
+</ul>
+
 </div>
-
-  <div class="wow animated fadeIn" data-wow-delay=".15s">
-  <a href="https://github.com/AlexanderGarcia98/STAT_107_Project_02_Exploratory_Data_Analysis" class="project card text-themed"><img id="exploratory-data-analysis-img" class="card-img-top" src="/assets/pngs/exploratory_scshot.png" alt="Exploratory Data Analysis" /><div class="card-body">
-      <h5 id="exploratory-data-analysis-name" class="card-title">Exploratory Data Analysis
-      </h5>
-      <p id="exploratory-data-analysis-desc" class="card-text">STAT 107 project cleaning and exploring a video game character dataset, with visualizations and hypothesis testing.</p>
-      <p id="exploratory-data-analysis-tools" class="card-text"><span class="badge badge-pill text-primary border border-primary ml-1">Python</span><span class="badge badge-pill text-primary border border-primary ml-1">Pandas</span><span class="badge badge-pill text-primary border border-primary ml-1">Statsmodels</span></p>
-    </div>
-  </a>
-</div>
-
-  <div class="wow animated fadeIn" data-wow-delay=".15s">
-  <a href="/projects/3-crime-in-chicago-2025" class="project card text-themed"><img id="crime-in-chicago-2025-img" class="card-img-top" src="/assets/pngs/chicago_crimes.png" alt="Crime in Chicago 2025" /><div class="card-body">
-      <h5 id="crime-in-chicago-2025-name" class="card-title">Crime in Chicago 2025
-      </h5>
-      <p id="crime-in-chicago-2025-desc" class="card-text">Interactive Streamlit data story exploring 2025 Chicago crime patterns, long-term citywide trends, and how neighborhood hardship relates to reported incidents.</p>
-      <p id="crime-in-chicago-2025-tools" class="card-text"><span class="badge badge-pill text-primary border border-primary ml-1">Python</span><span class="badge badge-pill text-primary border border-primary ml-1">Streamlit</span><span class="badge badge-pill text-primary border border-primary ml-1">Pandas</span><span class="badge badge-pill text-primary border border-primary ml-1">Altair</span><span class="badge badge-pill text-primary border border-primary ml-1">Docker</span></p>
-    </div>
-  </a>
-</div>
-
-  
-
-
-
-
-  <!-- Remote Projects -->
-  
-</div>
-
-
   </main>
   <footer class="mt-auto py-3 text-center">
 
