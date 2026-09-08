@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+
+<!--
+  portfolYOU Jekyll theme by Youssef Raafat
+  Free for personal and commercial use under the MIT license
+  https://github.com/YoussefRaafatNasry/portfolYOU
+  Updates for JPN Fall 2024
+  FALL2024ID7839
+-->
+
+<html lang="en" class="h-100">
+
+<head>
+
+  
+  
+  
+
+  
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="NFL Fourth-Down Conversion Model">
+  <meta property="og:description" content="Random forest classifier that estimates the probability an NFL fourth-down attempt is converted, trained on nflverse play-by-play data and evaluated on a hel...">
+  <meta property="og:image" content="assets/pngs/final_project_scshot.png">
+
+  <title>NFL Fourth-Down Conversion Model</title>
+  <meta name="description" content="Random forest classifier that estimates the probability an NFL fourth-down attempt is converted, trained on nflverse play-by-play data and evaluated on a hel...">
+
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.ico">
+
+  <!-- Theme style -->
+  <script src="/assets/js/theme.js"></script>
+
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.0/css/all.css">
+
+  <!-- Bootstrap CSS CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+
+  <!-- Animate CSS CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/assets/css/style.css">
+
+</head>
+
+<body class="h-100 d-flex flex-column">
+
+  <main class="flex-shrink-0 container mt-5">
+    <nav class="navbar navbar-expand-lg navbar-themed">
+
+  <a class="navbar-brand" href="/"><h5><b>Alexander Garcia</b></h5></a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <i class="fas fa-1x fa-bars text-themed"></i>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav ml-auto"><a class="nav-item nav-link active" href="/projects/">Projects</a>
+
+      <a class="nav-item nav-link " href="/about/">About</a>
+
+      
+
+      <span id="theme-toggler" class="nav-item nav-link" role="button" onclick="toggleTheme()"></span>
+    </div>
+  </div>
+
+</nav>
+    <div class="col-lg-10 mx-auto mt-5 markdown-body">
+  <h1 id="nfl-fourth-down-conversion-model">NFL Fourth-Down Conversion Model</h1>
+
+<p>A machine learning project that predicts the probability of converting a fourth down from the
+game state at the snap — distance to go, field position, play call, and the teams on the field —
+using NFL play-by-play data.</p>
+
+<p class="text-center">
+<a class="m-1 btn btn-outline-primary btn-2 " href="https://github.com/garcia9810/Final_Project_Football">
+  View on GitHub
+</a>
+</p>
+
+<p><img src="/assets/pngs/final_project_scshot.png" alt="Calibration curve and predicted probability distribution for the fourth-down model" /></p>
+
+<h2 id="the-question">The Question</h2>
+
+<p>Fourth down is the highest-leverage decision in football: go for it, punt, or kick. Answering that
+well starts with a single number — how likely is this attempt to succeed? This project builds a
+model for exactly that number and checks whether the probabilities it produces can be trusted.</p>
+
+<h2 id="data">Data</h2>
+
+<p>Play-by-play data comes from the nflverse project via <code class="language-plaintext highlighter-rouge">nflreadpy</code>, filtered to fourth-down
+attempts. The most recent season is held out as the test set, with prior seasons used for
+training — 4,437 training plays and 116 test plays. Roughly 52.9% of training attempts were
+converted, so the classes are close to balanced.</p>
+
+<h2 id="features">Features</h2>
+
+<ul>
+  <li><strong>togo</strong> — yards to the first-down marker (1–34)</li>
+  <li><strong>yardline</strong> — yards from the opponent’s end zone (1–99)</li>
+  <li><strong>play_type</strong> — pass or run</li>
+  <li><strong>posteam</strong> / <strong>defteam</strong> — offense and defense</li>
+</ul>
+
+<p>Numeric features pass through unscaled, <code class="language-plaintext highlighter-rouge">play_type</code> is one-hot encoded, and the two team columns
+are target encoded — each abbreviation is replaced with that team’s conversion rate in the
+training data — so 32 teams become one numeric column apiece instead of a wide sparse block.</p>
+
+<h2 id="model-and-tuning">Model and Tuning</h2>
+
+<p>A scikit-learn pipeline wraps the preprocessing and a random forest classifier. <code class="language-plaintext highlighter-rouge">GridSearchCV</code>
+with 5-fold cross-validation searched <code class="language-plaintext highlighter-rouge">n_estimators</code>, <code class="language-plaintext highlighter-rouge">max_depth</code>, and <code class="language-plaintext highlighter-rouge">min_samples_leaf</code>, scoring
+on negative log loss rather than accuracy — the goal is a calibrated probability, not a hard
+yes/no call. The best configuration was 300 trees with <code class="language-plaintext highlighter-rouge">max_depth=5</code> and <code class="language-plaintext highlighter-rouge">min_samples_leaf=10</code>,
+at a cross-validated log loss of 0.6439.</p>
+
+<h2 id="results">Results</h2>
+
+<p>On the held-out season the tuned model reached a <strong>log loss of 0.5810</strong> and a <strong>ROC-AUC of
+0.7697</strong> — it improved on its own cross-validation loss and ranks converted plays above failed
+ones far better than chance.</p>
+
+<p>The calibration curve above is the more interesting plot. Across the range where the model
+actually makes predictions it tracks the diagonal closely, meaning a stated 70% really does
+convert about 70% of the time. The companion histogram shows why: converted and unconverted
+plays separate, but they overlap heavily in the middle — the model is honest about the fourth
+downs that genuinely are coin flips.</p>
+
+<h2 id="what-the-model-learned">What the Model Learned</h2>
+
+<p>Conversion rate falls steeply as yards-to-go increases, and run plays convert at a higher rate
+than pass plays — the two dominant signals, and both match how fourth-down decisions are
+discussed in practice. Because the output is a calibrated probability rather than a label, it
+slots directly into the kind of win-probability and decision models NFL teams use to decide
+whether to go for it.</p>
+
+</div>
+  </main>
+  <footer class="mt-auto py-3 text-center">
+
+  <small class="text-muted mb-2">
+    <i class="fas fa-code"></i> with <i class="fas fa-heart"></i>
+    by <strong>Alexander "AJ" Garcia</strong>
+  </small>
+
+  <div class="container-fluid justify-content-center"><a class="social mx-1"  href="mailto:a.garcia11004@gmail.com"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#db4437'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fas fa-envelope fa-1x"></i>
+    </a><a class="social mx-1"  href="https://www.github.com/garcia9810"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#333333'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fab fa-github fa-1x"></i>
+    </a><a class="social mx-1"  href="https://www.linkedin.com/in/alexandergarcia-7755a9333"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#007bb5'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fab fa-linkedin-in fa-1x"></i>
+    </a>
+
+</div>
+
+  Theme by <a href="https://github.com/YoussefRaafatNasry/portfolYOU">portfolYOU</a> and <a href="https://github.com/4dcu-be/4dcu.be">4dcu.be</a>.
+
+  
+<!--<small id="attribution">
+    theme <a href="https://github.com/YoussefRaafatNasry/portfolYOU">portfolYOU</a>
+  </small>
+-->
+
+</footer>
+
+
+
+
+  
+  <!-- GitHub Buttons -->
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+<!-- jQuery CDN -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Popper.js CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+
+<!-- Bootstrap JS CDN -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<!-- wow.js CDN & Activation -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.js"></script>
+<script> new WOW().init(); </script>
+
+<!-- Initialize all tooltips -->
+<script>
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+})
+</script>
+</body>
+
+<!--
+end of checks! JPN
+-->
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
